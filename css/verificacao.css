@@ -1,0 +1,237 @@
+/* Estilos para a página de verificação em dois fatores */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("../img/bg-medicine.jpg.png") no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Segoe UI", Arial, sans-serif;
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 40, 80, 0.75);
+  z-index: 0;
+}
+
+.verificacao-container {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  width: 460px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.verificacao-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #0077b6;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.verificacao-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #003366;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.verificacao-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mensagem-info {
+  text-align: center;
+  line-height: 1.6;
+  color: #444;
+}
+
+.mensagem-info p {
+  margin: 10px 0;
+}
+
+.codigo-display {
+  font-family: "Consolas", monospace;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0077b6;
+  background-color: #e6f3f8;
+  border: 2px dashed #0077b6;
+  border-radius: 8px;
+  padding: 15px 25px;
+  margin: 20px auto;
+  max-width: fit-content;
+  letter-spacing: 3px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: pulse 2s infinite;
+}
+
+.aviso {
+  font-size: 0.9rem;
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-top: 20px;
+  text-align: center;
+  border-left: 4px solid #ffeeba;
+}
+
+.verificacao-form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.verificacao-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+}
+
+.verificacao-form input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 2px solid #aad4eb;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  background: #f8fcff;
+  text-align: center;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  text-align: center;
+  border-left: 4px solid #f5c6cb;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.verificacao-form button {
+  flex-grow: 2;
+  padding: 14px;
+  background: #0077b6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.verificacao-form button:hover {
+  background: #023e8a;
+}
+
+.cancel-link {
+  flex-grow: 1;
+  text-align: center;
+  color: #6c757d;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  margin-left: 10px;
+  border: 1px solid #dee2e6;
+}
+
+.cancel-link:hover {
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+.verificacao-footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.codigo-timer {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+/* Animações */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 119, 182, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 119, 182, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 119, 182, 0);
+  }
+}
+
+/* Media queries */
+@media (max-width: 500px) {
+  .verificacao-container {
+    padding: 24px 16px;
+  }
+
+  .verificacao-title {
+    font-size: 1.3rem;
+  }
+
+  .codigo-display {
+    font-size: 1.8rem;
+    padding: 10px 15px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .verificacao-form button,
+  .cancel-link {
+    width: 100%;
+    margin-left: 0;
+  }
+}

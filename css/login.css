@@ -1,0 +1,350 @@
+/* Estilos para a página de login */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("../img/bg-medicine.jpg.png") no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Segoe UI", Arial, sans-serif;
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 40, 80, 0.75);
+  z-index: 0;
+}
+
+.login-container {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 48px 36px 36px 36px;
+  border-radius: 14px;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.3);
+  min-width: 340px;
+  max-width: 90vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-title {
+  text-align: center;
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #003366;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.login-form {
+  width: 100%;
+  max-width: 320px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  border: 1px solid #aad4eb;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  background: #f2f9fc;
+}
+
+.login-form button {
+  width: 60%;
+  margin: 0 auto;
+  display: block;
+  padding: 14px;
+  background: #0077b6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.login-form button:hover {
+  background: #023e8a;
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+/* Estilos para as mensagens animadas */
+#mensagem-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 400px;
+}
+
+.mensagem {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.mensagem-erro {
+  background-color: #f8d7da;
+  border-left: 5px solid #e74a3b;
+  color: #721c24;
+  animation: fadeIn 0.5s ease forwards, shake 0.5s ease;
+}
+
+.mensagem-sucesso {
+  background-color: #d4edda;
+  border-left: 5px solid #1cc88a;
+  color: #155724;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: fadeIn 0.5s ease forwards, pulse 1.5s infinite;
+}
+
+.mensagem-icone {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.mensagem-fechar {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+.mensagem-fechar:hover {
+  opacity: 1;
+}
+
+/* Contador de bloqueio */
+.contador-bloqueio {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+/* Para destacar a mensagem de bloqueio */
+.mensagem-erro.com-timer {
+  border-left-color: #dc3545;
+  animation: pulse-red 2s infinite;
+}
+
+/* Loader para indicador de carregamento */
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(28, 200, 138, 0.3);
+  border-radius: 50%;
+  border-top-color: #1cc88a;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+/* Tela de carregamento */
+.tela-carregamento {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #004d7a, #008793);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: #fff;
+  padding: 20px;
+}
+
+.carregamento-titulo {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.carregamento-mensagem {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.progresso-container {
+  width: 80%;
+  max-width: 400px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.progresso-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #1cc88a, #36b9cc);
+  border-radius: 10px;
+  transition: width 0.1s ease;
+  position: relative;
+  box-shadow: 0 0 5px rgba(28, 200, 138, 0.5);
+  animation: pulsar 1s infinite;
+}
+
+.progresso-valor {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(28, 200, 138, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(28, 200, 138, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(28, 200, 138, 0);
+  }
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes pulsar {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Media queries */
+@media (max-width: 500px) {
+  .login-container {
+    padding: 24px 8px;
+    min-width: unset;
+  }
+  .login-title {
+    font-size: 1.4rem;
+  }
+  .login-form {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,103 @@
+[2025-06-02 15:29:16] Tentativa de login: usuário=asdas
+[2025-06-02 15:29:16] Usuário não encontrado: asdas
+[2025-06-02 15:29:18] Tentativa de login: usuário=asdas
+[2025-06-02 15:29:18] Usuário não encontrado: asdas
+[2025-06-02 15:29:25] Tentativa de login: usuário=asdas
+[2025-06-02 15:29:25] Usuário não encontrado: asdas
+[2025-06-02 15:30:50] Tentativa de login: usuário=admin
+[2025-06-02 15:30:50] Usuário encontrado: ID=1, Hash=$2y$10$A7B...
+[2025-06-02 15:30:50] Senha incorreta para o usuário: admin
+[2025-06-02 15:30:59] Tentativa de login: usuário=admin
+[2025-06-02 15:30:59] Usuário encontrado: ID=1, Hash=$2y$10$A7B...
+[2025-06-02 15:30:59] Senha incorreta para o usuário: admin
+[2025-06-02 15:31:06] Tentativa de login: usuário=admin
+[2025-06-02 15:31:06] Usuário encontrado: ID=1, Hash=$2y$10$A7B...
+[2025-06-02 15:31:06] Senha incorreta para o usuário: admin
+[2025-06-02 18:04:52] Tentativa de login: usuário=asdas
+[2025-06-02 18:04:52] Usuário não encontrado: asdas
+[2025-06-02 18:05:00] Tentativa de login: usuário=admin
+[2025-06-02 18:05:00] Usuário encontrado: ID=1, Hash=$2y$10$A7B...
+[2025-06-02 18:05:00] Senha incorreta para o usuário: admin
+[2025-06-02 18:06:15] Tentativa de login: usuário=admin
+[2025-06-02 18:06:15] Usuário encontrado: ID=1, Hash=$2y$10$A7B...
+[2025-06-02 18:06:15] Senha incorreta para o usuário: admin
+[2025-06-02 18:08:04] Tentativa de login: usuário=admin
+[2025-06-02 18:08:04] Usuário encontrado: ID=1, Hash=123456...
+[2025-06-02 18:08:04] Senha incorreta para o usuário: admin
+[2025-06-02 18:13:35] Tentativa de login: usuário=vandyck
+[2025-06-02 18:13:35] Usuário encontrado: ID=4, Hash=123456...
+[2025-06-02 18:13:35] Senha incorreta para o usuário: vandyck
+[2025-06-02 18:15:03] Tentativa de login: usuário=vandyck
+[2025-06-02 18:15:03] Usuário encontrado: ID=4, Hash=123456...
+[2025-06-02 18:15:03] Senha incorreta para o usuário: vandyck
+[2025-06-02 18:17:56] Tentativa de login: usuário=vandyck
+[2025-06-02 18:17:56] Usuário encontrado: ID=4, Hash=123456...
+[2025-06-02 18:17:56] Senha incorreta para o usuário: vandyck
+[2025-06-02 18:23:15] Tentativa de login: usuário=vandyck
+[2025-06-02 18:23:15] Usuário encontrado: ID=4, Hash=$2y$10$cYo...
+[2025-06-02 18:23:15] Senha correta para o usuário: vandyck
+[2025-06-02 18:23:15] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 18:26:17] Tentativa de login: usuário=admin
+[2025-06-02 18:26:17] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 18:26:17] Senha correta para o usuário: admin
+[2025-06-02 18:26:17] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 18:26:50] Tentativa de login: usuário=asdasd
+[2025-06-02 18:26:50] Usuário não encontrado: asdasd
+[2025-06-02 18:29:32] Tentativa de login: usuário=admin
+[2025-06-02 18:29:32] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 18:29:32] Senha correta para o usuário: admin
+[2025-06-02 18:29:32] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 18:33:42] Tentativa de login: usuário=asdasd
+[2025-06-02 18:33:42] Usuário não encontrado: asdasd
+[2025-06-02 18:37:54] Tentativa de login: usuário=admin
+[2025-06-02 18:37:54] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 18:37:54] Senha incorreta para o usuário: admin
+[2025-06-02 18:38:02] Tentativa de login: usuário=admin
+[2025-06-02 18:38:02] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 18:38:03] Senha incorreta para o usuário: admin
+[2025-06-02 18:38:08] Tentativa de login: usuário=admin
+[2025-06-02 18:38:08] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 18:38:08] Senha correta para o usuário: admin
+[2025-06-02 18:38:08] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 18:38:26] Tentativa de login: usuário=admin
+[2025-06-02 18:38:26] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 18:38:26] Senha correta para o usuário: admin
+[2025-06-02 18:38:26] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 18:42:45] Tentativa de login: usuário=admin
+[2025-06-02 18:42:45] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 18:42:45] Senha correta para o usuário: admin
+[2025-06-02 18:42:45] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 18:43:16] Tentativa de login: usuário=admin
+[2025-06-02 18:43:16] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 18:43:16] Senha correta para o usuário: admin
+[2025-06-02 18:43:16] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 18:44:03] Tentativa de login: usuário=admin
+[2025-06-02 18:44:03] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 18:44:03] Senha correta para o usuário: admin
+[2025-06-02 18:44:03] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 18:44:10] Tentativa de login: usuário=vandyck
+[2025-06-02 18:44:10] Usuário encontrado: ID=4, Hash=$2y$10$cYo...
+[2025-06-02 18:44:10] Senha correta para o usuário: vandyck
+[2025-06-02 18:44:10] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 18:45:23] Tentativa de login: usuário=admin
+[2025-06-02 18:45:23] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 18:45:23] Senha correta para o usuário: admin
+[2025-06-02 18:45:23] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 18:46:05] Tentativa de login: usuário=vanyck
+[2025-06-02 18:46:05] Usuário não encontrado: vanyck
+[2025-06-02 18:46:11] Tentativa de login: usuário=vandyck
+[2025-06-02 18:46:11] Usuário encontrado: ID=4, Hash=$2y$10$cYo...
+[2025-06-02 18:46:11] Senha correta para o usuário: vandyck
+[2025-06-02 18:46:11] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 18:58:16] Tentativa de login: usuário=vandyck 
+[2025-06-02 18:58:16] Usuário encontrado: ID=4, Hash=$2y$10$cYo...
+[2025-06-02 18:58:16] Senha correta para o usuário: vandyck 
+[2025-06-02 18:58:16] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 19:01:38] Tentativa de login: usuário=vandyck
+[2025-06-02 19:01:38] Usuário encontrado: ID=4, Hash=$2y$10$cYo...
+[2025-06-02 19:01:38] Senha correta para o usuário: vandyck
+[2025-06-02 19:01:38] Sessão iniciada. Redirecionando para dashboard.php
+[2025-06-02 19:03:36] Tentativa de login: usuário=admin
+[2025-06-02 19:03:36] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 19:03:36] Senha correta para o usuário: admin
+[2025-06-02 19:03:36] Sessão iniciada. Redirecionando para dashboard.php

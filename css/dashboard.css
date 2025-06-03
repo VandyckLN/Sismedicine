@@ -1,0 +1,1006 @@
+/* ==========================
+   Dashboard - Estilos Gerais
+   ========================== */
+
+:root {
+  --primary: #2c3e50;
+  --primary-light: #34495e;
+  --primary-dark: #1a252f;
+  --secondary: #3498db;
+  --secondary-light: #5dade2;
+  --accent: #e74c3c;
+  --success: #2ecc71;
+  --warning: #f39c12;
+  --danger: #e74c3c;
+  --info: #3498db;
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+  --text-lighter: #bdc3c7;
+  --background: #ecf0f1;
+  --card-bg: #ffffff;
+  --border-color: #dfe6e9;
+
+  /* Dimensões refinadas */
+  --sidebar-width: 250px;
+  --header-height: 64px;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+  /* Espaçamentos padronizados */
+  --spacing-xs: 8px;
+  --spacing-sm: 15px;
+  --spacing-md: 20px;
+  --spacing-lg: 25px;
+}
+
+/* Correção da distribuição dos elementos na tela para exibição web */
+
+/* Corrigir margin do título que estava com -500px */
+#dashboard-title {
+  margin-top: 50px;
+  
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 1.6rem;
+  font-weight: 600;
+  position: relative;
+  background: linear-gradient(to right, #2c3e50, #3498db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  border-bottom: 2px solid #3498db;
+}
+
+/* Otimização da área de conteúdo */
+.content-area {
+  padding: var(--spacing-md);
+  margin-left: var(--sidebar-width);
+}
+
+/* Layout de dashboard revisado */
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+/* Melhor distribuição de espaço entre colunas */
+.main-content-row {
+  display: grid;
+  grid-template-columns: 68% 32%;
+  gap: var(--spacing-md);
+}
+
+/* Cards de estatísticas com tamanho corrigido */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: 0;
+}
+
+.status-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md); /* Reduzido de 50px para um valor razoável */
+  box-shadow: var(--shadow);
+  transition: transform 0.25s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px; /* Reduzido de 360px para 160px */
+  border-top: 3px solid var(--secondary);
+}
+
+/* Gráfico ajustado para tamanho adequado */
+.chart-container {
+  width: 100%;
+  height: 320px;
+  position: relative;
+}
+
+/* Ajuste da seção de conteúdo para espaçamento adequado */
+.content-section {
+  margin-bottom: var(--spacing-md);
+}
+
+.section-body {
+  padding: var(--spacing-md);
+}
+
+/* Widgets ajustados para distribuição vertical */
+.widgets-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  height: 100%;
+}
+
+.widget {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.25s;
+  border-top: 3px solid var(--primary);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Ajuste para widgets ficarem com altura proporcional */
+.widget:first-child {
+  min-height: 220px;
+}
+
+.widget:last-child {
+  min-height: 180px;
+}
+
+.widget-body {
+  padding: var(--spacing-md);
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Estilização aprimorada para a tabela de atividades */
+
+/* Tabela com visual mais atrativo e moderno */
+.activities-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+}
+
+/* Cabeçalho com gradiente e melhor contraste */
+.activities-table thead {
+  background: linear-gradient(to right, var(--primary), var(--primary-light));
+}
+
+.activities-table th {
+  color: white;
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 16px;
+  border: none;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* Linhas com estilo alternado e hover interativo */
+.activities-table tbody tr {
+  background-color: var(--card-bg);
+  transition: background-color 0.2s;
+}
+
+.activities-table tbody tr:nth-child(even) {
+  background-color: rgba(236, 240, 241, 0.3);
+}
+
+.activities-table tbody tr:hover {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+/* Células com bordas sutis e melhor espaçamento */
+.activities-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.activities-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Estilização de colunas específicas */
+.activity-time {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.activity-time::before {
+  content: "\f017"; /* Ícone de relógio do FontAwesome */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  margin-right: 6px;
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.activity-user {
+  font-weight: 600;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.activity-user::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: var(--secondary);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.activity-action {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+/* Container da tabela com altura controlada e scrollbar personalizado */
+.section-body:has(table) {
+  max-height: 350px;
+  overflow-y: auto;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  background: white;
+  padding: 0;
+}
+
+/* Scrollbar personalizado para a tabela */
+.section-body:has(table)::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.section-body:has(table)::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 0 0 var(--border-radius) 0;
+}
+
+.section-body:has(table)::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.section-body:has(table)::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* Ícones para tipos de ações */
+.activity-action[data-action="dispensacao"]::before {
+  content: "\f484"; /* Ícone de pílula */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 6px;
+  color: var(--primary);
+}
+
+.activity-action[data-action="cadastro"]::before {
+  content: "\f067"; /* Ícone de usuário */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 6px;
+  color: var(--success);
+}
+
+.activity-action[data-action="exclusao"]::before {
+  content: "\f1f8"; /* Ícone de lixeira */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 6px;
+  color: var(--danger);
+}
+
+/* ==========================
+   Aprimoramento dos Menus e Navegação
+   ========================== */
+
+/* Menu Lateral (Sidebar) Aprimorado */
+.sidebar {
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary) 100%
+  );
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--header-height));
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  z-index: 100;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-speed) ease;
+}
+
+/* Personalização da scrollbar da sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: var(--primary-dark);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Título do menu com estilo refinado */
+.menu-title {
+  padding: 15px 20px 12px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 8px;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* Container dos itens de menu */
+.menu-items {
+  padding: 5px 0;
+}
+
+/* Item de menu individual */
+.menu-item {
+  position: relative;
+  margin: 2px 8px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Indicador de menu ativo */
+.menu-item.active::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 4px;
+  background: var(--secondary);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Link do item de menu */
+.menu-item a {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+  transition: all 0.3s;
+  font-size: 0.95rem;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ícone do item de menu */
+.menu-item a i {
+  font-size: 1.1rem;
+  min-width: 24px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+/* Efeito de hover no item de menu */
+.menu-item:hover a {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Estado ativo do item de menu */
+.menu-item.active a {
+  color: white;
+  background: rgba(52, 152, 219, 0.2);
+  font-weight: 500;
+}
+
+.menu-item.active a i {
+  color: var(--secondary);
+}
+
+/* Efeito de expansão de submenus (se houver) */
+.menu-item.has-submenu > a::after {
+  content: "\f107"; /* Ícone de seta para baixo do FontAwesome */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-left: auto;
+  transition: transform 0.3s;
+}
+
+.menu-item.has-submenu.open > a::after {
+  transform: rotate(180deg);
+}
+
+/* Submenu aninhado */
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 0 4px;
+  border-radius: 4px;
+}
+
+.menu-item.open .submenu {
+  max-height: 500px; /* Altura máxima para animação */
+}
+
+.submenu-item a {
+  padding: 10px 16px 10px 40px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.submenu-item:hover a {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Menu Superior/Header Aprimorado */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background: var(--secondary);
+  color: var(--text-lighter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  transition: all 0.3s;
+}
+
+/* Logo e título do sistema */
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header h1 i {
+  color: var(--secondary);
+}
+
+/* Informações do usuário */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Relógio no header */
+#relogio {
+  background: var(--primary);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: "Consolas", monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.2);
+}
+
+/* Avatar do usuário */
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid white;
+}
+
+/* Informações do usuário (nome) */
+.user-welcome {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-welcome span:first-child {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.user-welcome span:last-child {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Botão de logout */
+.logout {
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  background: var(--primary);
+  border-radius: 20px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.2);
+}
+
+.logout:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+/* Menu de notificações (se houver) */
+.notifications-menu {
+  position: relative;
+}
+
+.notifications-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-dark);
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+}
+
+.notifications-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.7rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown de notificações */
+.notifications-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 320px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  margin-top: 10px;
+  z-index: 1000;
+  overflow: hidden;
+  max-height: 400px;
+  display: none;
+}
+
+.notifications-header {
+  padding: 12px 15px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notifications-list {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  gap: 12px;
+  transition: background-color 0.2s;
+}
+
+.notification-item:hover {
+  background-color: rgba(236, 240, 241, 0.5);
+}
+
+.notification-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(52, 152, 219, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+  font-size: 1.2rem;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.notification-desc {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 3px;
+}
+
+.notification-time {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 5px;
+}
+
+/* Responsividade para manter layout em uma única tela */
+@media (max-width: 1200px) {
+  .main-content-row {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .widgets-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .widgets-container {
+    grid-template-columns: 1fr;
+  }
+}
+ div.alert{
+    background-color: var(--info);
+ }
+@media (max-width: 480px) {
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 60px;
+  }
+
+  .menu-title,
+  .menu-item span {
+    display: none;
+  }
+
+  .menu-item a {
+    padding: 15px 0;
+    justify-content: center;
+  }
+
+  .menu-item i {
+    font-size: 1.3rem;
+  }
+
+  .sidebar:hover {
+    width: 250px;
+  }
+
+  .sidebar:hover .menu-title,
+  .sidebar:hover .menu-item span {
+    display: block;
+  }
+
+  .sidebar:hover .menu-item a {
+    padding: 12px 20px;
+    justify-content: flex-start;
+  }
+
+  .sidebar:hover .menu-item i {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menu-item {
+    width: auto;
+  }
+
+  .menu-item a {
+    padding: 10px 15px;
+    display: flex;
+  }
+
+  .menu-item span,
+  .menu-title {
+    display: block;
+  }
+
+  .content-area {
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  .menu-title {
+    text-align: center;
+  }
+
+  .sidebar:hover {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .user-info {
+    margin-top: 10px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+
+  .activities-table,
+  .activities-table thead,
+  .activities-table tbody,
+  .activities-table th,
+  .activities-table td,
+  .activities-table tr {
+    display: block;
+  }
+
+  .activities-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .activities-table tr {
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+
+  .activities-table td {
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    padding-left: 50%;
+  }
+
+  .activities-table td:before {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  .activities-table td:nth-of-type(1):before {
+    content: "Data/Hora";
+  }
+  .activities-table td:nth-of-type(2):before {
+    content: "Usuário";
+  }
+  .activities-table td:nth-of-type(3):before {
+    content: "Ação";
+  }
+  .activities-table td:nth-of-type(4):before {
+    content: "Detalhes";
+  }
+}
+
+/* Responsividade do menu */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 60px;
+  }
+
+  .menu-title,
+  .menu-item span {
+    display: none;
+  }
+
+  .menu-item a {
+    padding: 15px 0;
+    justify-content: center;
+  }
+
+  .menu-item i {
+    font-size: 1.3rem;
+  }
+
+  .sidebar:hover {
+    width: 250px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .sidebar:hover .menu-title,
+  .sidebar:hover .menu-item span {
+    display: block;
+  }
+
+  .sidebar:hover .menu-item a {
+    padding: 12px 16px;
+    justify-content: flex-start;
+  }
+
+  .sidebar:hover .menu-item i {
+    font-size: 1.1rem;
+  }
+
+  .menu-item.active::before {
+    left: 0;
+    height: 40%;
+  }
+
+  .sidebar:hover .menu-item.active::before {
+    left: -8px;
+    height: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0 15px;
+  }
+
+  .user-info {
+    gap: 12px;
+  }
+
+  #relogio {
+    display: none;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--primary);
+  }
+
+  .menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .menu-item {
+    width: auto;
+    margin: 5px;
+    border-radius: 20px;
+  }
+
+  .menu-item a {
+    padding: 8px 15px;
+    display: flex;
+    border-radius: 20px;
+  }
+
+  .menu-item span {
+    display: block;
+    font-size: 0.85rem;
+  }
+
+  .menu-item.active::before {
+    display: none;
+  }
+
+  .content-area {
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  .menu-title {
+    display: none;
+  }
+
+  .sidebar:hover {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .user-info {
+    margin-top: 10px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .menu-item {
+    margin: 3px;
+  }
+
+  .menu-item a {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .menu-item a i {
+    font-size: 1rem;
+    margin-right: 5px;
+  }
+
+  .logout {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,100 @@
+[2025-06-02 19:06:59] Tentativa de login: usuário=admin
+[2025-06-02 19:06:59] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 19:06:59] Senha correta para o usuário: admin
+[2025-06-02 19:06:59] Sessão iniciada. Redirecionando para página de sucesso.
+[2025-06-02 19:08:29] Tentativa de login: usuário=adssa
+[2025-06-02 19:08:29] Usuário não encontrado: adssa
+[2025-06-02 19:26:28] Tentativa de login: usuário=vandyck
+[2025-06-02 19:26:28] Usuário encontrado: ID=4, Hash=$2y$10$cYo...
+[2025-06-02 19:26:28] Senha correta para o usuário: vandyck
+[2025-06-02 19:26:28] Sessão iniciada. Redirecionando para página de sucesso.
+[2025-06-02 19:36:22] Tentativa de login: usuário=admin 
+[2025-06-02 19:36:22] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 19:36:22] Senha incorreta para o usuário: admin 
+[2025-06-02 19:37:38] Tentativa de login: usuário=admin
+[2025-06-02 19:37:38] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 19:37:38] Senha correta para o usuário: admin
+[2025-06-02 19:37:38] Sessão iniciada. Redirecionando para página de sucesso.
+[2025-06-02 19:39:02] Tentativa de login: usuário=admin
+[2025-06-02 19:39:02] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 19:39:02] Senha incorreta para o usuário: admin
+[2025-06-02 19:39:07] Tentativa de login: usuário=admin
+[2025-06-02 19:39:07] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 19:39:07] Senha incorreta para o usuário: admin
+[2025-06-02 19:39:10] Tentativa de login: usuário=admin
+[2025-06-02 19:39:10] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 19:39:10] Senha incorreta para o usuário: admin
+[2025-06-02 19:39:15] Tentativa de login: usuário=admin
+[2025-06-02 19:39:15] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 19:39:15] Senha incorreta para o usuário: admin
+[2025-06-02 19:48:47] Tentativa de login: usuário=dasdas
+[2025-06-02 19:48:47] Usuário não encontrado: dasdas - Tentativa 5 de 3
+[2025-06-02 19:48:47] Conta bloqueada por 5 minutos após 3 tentativas falhas
+[2025-06-02 19:48:51] Tentativa de login: usuário=admin
+[2025-06-02 19:48:51] Usuário ainda bloqueado por 5 min e 56 seg
+[2025-06-02 19:48:55] Tentativa de login: usuário=admin
+[2025-06-02 19:48:55] Usuário ainda bloqueado por 5 min e 52 seg
+[2025-06-02 19:48:59] Tentativa de login: usuário=admin
+[2025-06-02 19:48:59] Usuário ainda bloqueado por 5 min e 48 seg
+[2025-06-02 19:50:47] Tentativa de login: usuário=admin
+[2025-06-02 19:50:47] Usuário ainda bloqueado por 3 min e 0 seg
+[2025-06-02 19:52:18] Tentativa de login: usuário=asdf
+[2025-06-02 19:52:18] Usuário ainda bloqueado por 2 min e 29 seg
+[2025-06-02 19:52:20] Tentativa de login: usuário=asdasd
+[2025-06-02 19:52:20] Usuário ainda bloqueado por 2 min e 27 seg
+[2025-06-02 19:52:26] Tentativa de login: usuário=vandyck
+[2025-06-02 19:52:26] Usuário ainda bloqueado por 2 min e 21 seg
+[2025-06-02 19:52:32] Tentativa de login: usuário=vandyck 
+[2025-06-02 19:52:32] Usuário ainda bloqueado por 2 min e 15 seg
+[2025-06-02 21:04:24] Tentativa de login: usuário=vandyck 
+[2025-06-02 21:04:24] Bloqueio expirado, tentativas reiniciadas para vandyck 
+[2025-06-02 21:04:24] Usuário encontrado: ID=4, Hash=$2y$10$cYo...
+[2025-06-02 21:04:24] Senha correta para o usuário: vandyck 
+[2025-06-02 21:04:24] Sessão iniciada. Redirecionando para página de sucesso.
+[2025-06-02 21:16:33] Tentativa de login: usuário=admin
+[2025-06-02 21:16:33] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 21:16:33] Senha correta para o usuário: admin
+[2025-06-02 21:16:33] Sessão iniciada. Redirecionando para página de sucesso.
+[2025-06-02 21:17:17] Tentativa de login: usuário=admin
+[2025-06-02 21:17:17] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 21:17:17] Senha correta para o usuário: admin
+[2025-06-02 21:17:17] Sessão iniciada. Redirecionando para página de sucesso.
+[2025-06-02 21:19:41] Tentativa de login: usuário=admin
+[2025-06-02 21:19:41] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 21:19:41] Senha incorreta para o usuário: admin - Tentativa 1 de 3
+[2025-06-02 21:19:47] Tentativa de login: usuário=admin
+[2025-06-02 21:19:47] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 21:19:47] Senha correta para o usuário: admin
+[2025-06-02 21:19:47] Sessão iniciada. Redirecionando para página de sucesso.
+[2025-06-02 21:19:47] Código de verificação gerado: 761058
+[2025-06-02 21:25:40] Tentativa de login: usuário=admin
+[2025-06-02 21:25:40] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 21:25:40] Senha correta para o usuário: admin
+[2025-06-02 21:25:40] Sessão iniciada. Redirecionando para página de sucesso.
+[2025-06-02 21:25:40] Código de verificação gerado: 637379
+[2025-06-02 22:13:25] Tentativa de login: usuário=admin
+[2025-06-02 22:13:25] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 22:13:25] Senha correta para o usuário: admin
+[2025-06-02 22:13:25] Sessão iniciada. Redirecionando para dashboard.
+[2025-06-02 23:42:58] Tentativa de login: usuário=admin
+[2025-06-02 23:42:58] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 23:42:58] Senha incorreta para o usuário: admin - Tentativa 1 de 3
+[2025-06-02 23:43:06] Tentativa de login: usuário=admin
+[2025-06-02 23:43:06] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-02 23:43:06] Senha incorreta para o usuário: admin - Tentativa 2 de 3
+[2025-06-02 23:43:10] Tentativa de login: usuário=asdasd
+[2025-06-02 23:43:10] Usuário não encontrado: asdasd - Tentativa 3 de 3
+[2025-06-02 23:43:10] Conta bloqueada por 5 minutos após 3 tentativas falhas
+[2025-06-03 01:41:15] Tentativa de login: usuário=admin
+[2025-06-03 01:41:15] Bloqueio expirado, tentativas reiniciadas para admin
+[2025-06-03 01:41:15] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-03 01:41:15] Senha correta para o usuário: admin
+[2025-06-03 01:41:15] Sessão iniciada. Redirecionando para dashboard.
+[2025-06-03 14:14:08] Tentativa de login: usuário=vandyck 
+[2025-06-03 14:14:08] Usuário encontrado: ID=4, Hash=$2y$10$cYo...
+[2025-06-03 14:14:08] Senha correta para o usuário: vandyck 
+[2025-06-03 14:14:08] Sessão iniciada. Redirecionando para dashboard.
+[2025-06-03 14:33:32] Tentativa de login: usuário=admin
+[2025-06-03 14:33:32] Usuário encontrado: ID=1, Hash=$2y$10$n1V...
+[2025-06-03 14:33:32] Senha correta para o usuário: admin
+[2025-06-03 14:33:32] Sessão iniciada. Redirecionando para dashboard.

@@ -1,0 +1,209 @@
+/* ===== Reset básico ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Fonte e cores principais ===== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+/* ===== Barra superior ===== */
+.top-bar {
+    background: linear-gradient(90deg, #0077b6 80%, #00b4d8 100%);
+    color: #fff;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 119, 182, 0.08);
+}
+
+.top-bar h2, .top-bar h1 {
+    font-size: 22px;
+}
+
+.top-bar a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #023e8a;
+    padding: 8px 18px;
+    border-radius: 6px;
+    transition: background 0.3s;
+    font-weight: 500;
+}
+
+.top-bar a:hover {
+    background-color: #03045e;
+}
+
+/* ===== Relógio ===== */
+.relogio {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* ===== Cards do dashboard ===== */
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin: 40px auto 0 auto;
+    max-width: 900px;
+    justify-content: center;
+}
+
+.card {
+    background: linear-gradient(135deg, #f8fafc 80%, #e0f2fe 100%);
+    border: 1px solid #dcdcdc;
+    border-radius: 15px;
+    padding: 32px 20px;
+    width: 260px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 119, 182, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 119, 182, 0.16);
+}
+
+.card h3, .card h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #0077b6;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 36px;
+    font-weight: bold;
+    color: #023e8a;
+}
+
+/* ===== Gráfico ===== */
+.grafico-container {
+    max-width: 600px;
+    margin: 40px auto 30px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 16px rgba(0, 119, 182, 0.08);
+}
+
+/* ===== Menu ===== */
+.menu, .menu-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+    padding: 24px 0;
+}
+
+.menu a, .menu-horizontal a {
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(90deg, #0077b6 80%, #00b4d8 100%);
+    padding: 12px 28px;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 119, 182, 0.08);
+}
+
+.menu a:hover, .menu-horizontal a:hover {
+    background: #023e8a;
+    transform: translateY(-2px) scale(1.04);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 900px) {
+    .dashboard-cards {
+        gap: 18px;
+        margin-top: 30px;
+    }
+    .card {
+        width: 90vw;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .card {
+        width: 95vw;
+        max-width: 400px;
+    }
+
+    .grafico-container {
+        width: 95vw;
+        min-width: 0;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 10px;
+        gap: 10px;
+    }
+}
+
+/* ===== Estilo para a tela de login ===== */
+.login-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 25px;
+    color: #0077b6;
+    font-size: 26px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.login-container input[type="submit"] {
+    width: 100%;
+    background-color: #0077b6;
+    color: #fff;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-container input[type="submit"]:hover {
+    background-color: #023e8a;
+}
+
+/* Mensagem de erro no login */
+.login-container .erro {
+    color: red;
+    margin-bottom: 15px;
+    font-weight: 500;
+}

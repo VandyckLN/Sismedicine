@@ -1,0 +1,70 @@
+/* Estilo extra para o formulário */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.top-bar {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.top-bar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+.container {
+    background: white;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+input[type=text],
+input[type=number],
+input[type=date],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+#msg-sucesso {
+    display: none;
+    background:#d4edda;
+    color:#155724;
+    padding:12px;
+    margin: 15px 0;
+    border:1px solid #c3e6cb;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
+}
