@@ -4,53 +4,96 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: "Arial", sans-serif;
+  overflow-x: hidden; /* Evita rolagem horizontal */
 }
 
 body {
-  min-height: 100vh;
-  min-width: 100vw;
-  display: flex;
-  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex; /* Facilita o alinhamento central */
   justify-content: center;
-  background: url("../img/bg-medicine.jpg.png") no-repeat center center fixed;
-  background-size: cover;
-  font-family: "Segoe UI", Arial, sans-serif;
-  position: relative;
+  align-items: center;
+  position: relative; /* Para posicionamento dos elementos filhos */
 }
 
-.overlay {
+.background-image {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 40, 80, 0.75);
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/bg-medicine.jpg.png");
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 50, 90, 0.7);
+  z-index: -1;
 }
 
 .login-container {
   position: relative;
   z-index: 1;
   background: rgba(255, 255, 255, 0.85);
-  padding: 48px 36px 36px 36px;
+  padding: 20px;
   border-radius: 14px;
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.3);
-  min-width: 340px;
-  max-width: 90vw;
-  width: 100%;
+  box-shadow: 0 4px 28px rgba(253, 253, 253, 0.863);
+  width: 90%; /* Largura responsiva em vez de fixa */
+  max-width: 700px; /* Tamanho máximo para desktops */
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: auto; /* Altura automática baseada no conteúdo */
+  min-height: 500px; /* Altura mínima ao invés de fixa */
+  margin: 20px; /* Margem para não colar nas bordas em telas pequenas */
+}
+
+.login-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  width: 90%; /* Largura responsiva */
+  max-width: 400px; /* Largura máxima */
+  text-align: center;
+  margin-top: 40px; /* Espaçamento em vez de posicionamento absoluto */
 }
 
 .login-title {
   text-align: center;
-  font-size: 2.3rem;
+  font-size: 2rem; /* Tamanho de fonte responsivo */
   font-weight: bold;
   color: #003366;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   letter-spacing: 1px;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.login-header {
+  margin-bottom: 25px;
+  width: 100%; /* Largura total para alinhamento */
+  text-align: center;
+}
+
+.login-header h2 {
+  color: #0056a9;
+  margin: 0 0 10px 0;
+  font-size: clamp(1.5rem, 5vw, 2rem); /* Fonte responsiva com clamp */
+}
+
+.login-header p {
+  color: #666;
+  margin: 0;
+  font-size: clamp(0.875rem, 3vw, 1rem);
 }
 
 .login-form {
@@ -63,6 +106,7 @@ body {
   margin-bottom: 8px;
   color: #333;
   font-weight: 600;
+  text-align: left; /* Alinhamento consistente */
 }
 
 .login-form input[type="text"],
@@ -72,34 +116,43 @@ body {
   margin-bottom: 20px;
   border: 1px solid #aad4eb;
   border-radius: 6px;
-  font-size: 1.05rem;
+  font-size: 16px;
   background: #f2f9fc;
+  box-sizing: border-box; /* Garante que o padding não aumente a largura */
 }
 
-.login-form button {
-  width: 60%;
-  margin: 0 auto;
-  display: block;
-  padding: 14px;
-  background: #0077b6;
-  color: #fff;
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%; /* Largura completa */
+}
+
+.btn-login {
+  background-color: #0078d4;
+  color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  font-weight: bold;
+  border-radius: 4px;
+  padding: 12px 20px;
+  width: 100%;
+  font-size: 16px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background-color 0.3s;
 }
 
-.login-form button:hover {
-  background: #023e8a;
+.btn-login:hover {
+  background-color: #0056a9;
 }
 
 .login-footer {
   text-align: center;
   margin-top: 20px;
   color: #333;
+  text-shadow: 1px 1px 2px rgba(19, 19, 19, 0.8);
   font-size: 0.9rem;
+  width: 100%;
+  padding: 10px 0;
+  position: relative; /* Muda de absoluto para relativo */
+  bottom: 0; /* Remove posicionamento absoluto */
 }
 
 /* Estilos para as mensagens animadas */
@@ -336,15 +389,88 @@ body {
 }
 
 /* Media queries */
-@media (max-width: 500px) {
+/* Para Celulares (até 767px) */
+@media (max-width: 767px) {
   .login-container {
-    padding: 24px 8px;
-    min-width: unset;
+    padding: 15px;
+    margin: 10px;
+    min-height: auto;
   }
+
+  .login-card {
+    padding: 20px 15px;
+    margin-top: 20px;
+  }
+
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .btn-login {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
   .login-title {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+
+  .login-header h2 {
     font-size: 1.4rem;
   }
+
+  .login-header p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Para Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .login-container {
+    max-width: 600px;
+    padding: 25px;
+  }
+
+  .login-card {
+    max-width: 350px;
+  }
+}
+
+/* Para Desktops (1024px e acima) */
+@media (min-width: 1024px) {
+  .login-container {
+    max-width: 700px;
+    padding: 30px;
+    min-height: 550px;
+  }
+
+  .login-card {
+    max-width: 400px;
+    padding: 30px 40px;
+  }
+}
+
+/* Para telas muito pequenas (menos de 375px) */
+@media (max-width: 374px) {
+  .login-container {
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .login-card {
+    padding: 15px 10px;
+  }
+
   .login-form {
     max-width: 100%;
+  }
+
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    padding: 8px;
+    margin-bottom: 15px;
   }
 }

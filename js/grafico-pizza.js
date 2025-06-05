@@ -1,49 +1,3 @@
-/**
- * Script para funcionalidades do dashboard
- */
-
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('DOM carregado completamente');
-
-    // Inicializar o relógio
-    atualizarRelogio();
-    setInterval(atualizarRelogio, 1000);
-
-    // Esperar um momento para garantir que o Chart.js esteja carregado
-    setTimeout(function () {
-        console.log('Tentando inicializar o gráfico...');
-
-        // Verificar se o Chart.js foi carregado
-        if (typeof Chart === 'undefined') {
-            console.error('Chart.js não está disponível. Verificando...');
-            // Tentar carregar novamente o Chart.js
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js';
-            script.onload = function () {
-                console.log('Chart.js carregado manualmente');
-                inicializarGraficoPizzaAnual();
-            };
-            document.head.appendChild(script);
-        } else {
-            console.log('Chart.js está disponível, inicializando gráfico');
-            inicializarGraficoPizzaAnual();
-        }
-    }, 1000);
-});
-
-// Função para atualizar o relógio
-function atualizarRelogio() {
-    const agora = new Date();
-    const horas = agora.getHours().toString().padStart(2, '0');
-    const minutos = agora.getMinutes().toString().padStart(2, '0');
-    const segundos = agora.getSeconds().toString().padStart(2, '0');
-
-    const elementoRelogio = document.getElementById('relogio');
-    if (elementoRelogio) {
-        elementoRelogio.textContent = `${horas}:${minutos}:${segundos}`;
-    }
-}
-
 // Dados simulados para o total anual de dispensações por medicamento
 const dadosMedicamentosAnual = [
     { nome: "Dipirona 500mg", quantidade: 2745, cor: "#FF6384" },
@@ -58,53 +12,48 @@ const dadosMedicamentosAnual = [
     { nome: "Loratadina 10mg", quantidade: 362, cor: "#BD10E0" }
 ];
 
-// Função para inicializar o gráfico de pizza com dados anuais
-function inicializarGraficoPizzaAnual() {
-    console.log("Inicializando gráfico de pizza anual...");
+// Função para criar o gráfico
+function criarGraficoPizza() {
+    console.log("Iniciando criação do gráfico de pizza...");
 
     try {
-        // Verificar se o elemento canvas existe na página
+        // Verificar se o Chart.js está disponível
+        if (typeof Chart === 'undefined') {
+            throw new Error("Chart.js não está carregado");
+        }
+
+        // Verificar se o canvas existe
         const canvas = document.getElementById('dispensacoes-chart');
         if (!canvas) {
-            console.error('Elemento canvas para o gráfico não encontrado');
-            return;
+            throw new Error("Canvas não encontrado");
         }
 
-        console.log("Canvas encontrado:", canvas);
-
-        // Verificar se o contexto 2D pode ser obtido
+        // Verificar se podemos obter o contexto 2D
         const ctx = canvas.getContext('2d');
         if (!ctx) {
-            console.error('Não foi possível obter o contexto 2D do canvas');
-            return;
-        }
-
-        console.log("Contexto 2D obtido com sucesso");
-
-        // Limpar qualquer gráfico existente
-        if (window.graficoDispensacoes) {
-            window.graficoDispensacoes.destroy();
-            console.log("Gráfico anterior destruído");
+            throw new Error("Não foi possível obter o contexto 2D");
         }
 
         // Esconder o indicador de carregamento
         const loading = document.getElementById('chart-loading');
         if (loading) {
             loading.style.display = 'none';
-            console.log("Indicador de carregamento escondido");
         }
 
-        // Preparar os dados para o Chart.js
-        console.log("Preparando dados para o gráfico...");
+        // Verificar se temos os dados do gráfico
+        if (!dadosMedicamentosAnual || !Array.isArray(dadosMedicamentosAnual) || dadosMedicamentosAnual.length === 0) {
+            throw new Error("Dados para o gráfico não estão disponíveis");
+        }
+
+        // Preparar os dados
         const labels = dadosMedicamentosAnual.map(item => item.nome);
         const dados = dadosMedicamentosAnual.map(item => item.quantidade);
         const cores = dadosMedicamentosAnual.map(item => item.cor);
 
-        console.log(`Dados preparados: ${labels.length} itens`);
+        console.log("Dados preparados para o gráfico:", labels, dados);
 
-        // Criar o gráfico de pizza
-        console.log("Criando o gráfico de pizza...");
-        window.graficoDispensacoes = new Chart(ctx, {
+        // Criar o gráfico
+        window.graficoPizza = new Chart(ctx, {
             type: 'pie',
             data: {
                 labels: labels,
@@ -137,47 +86,42 @@ function inicializarGraficoPizzaAnual() {
             }
         });
 
-        console.log("Gráfico criado com sucesso!");
+        console.log("Gráfico criado com sucesso");
 
         // Criar legenda personalizada
-        atualizarLegendaAnual(dadosMedicamentosAnual);
+        criarLegenda();
 
         // Configurar botão de exportação
         const btnExport = document.getElementById('btn-export-chart');
         if (btnExport) {
-            btnExport.removeEventListener('click', exportarGrafico);
-            btnExport.addEventListener('click', exportarGrafico);
+            btnExport.addEventListener('click', exportarGraficoPDF);
             console.log("Botão de exportação configurado");
         }
     } catch (error) {
         console.error("Erro ao criar gráfico:", error);
-
-        // Mostrar mensagem de erro no container do gráfico
-        const chartContainer = document.querySelector('.chart-container');
+        // Mostrar mensagem de erro
         const loading = document.getElementById('chart-loading');
-
         if (loading) {
-            loading.innerHTML = `<i class="fas fa-exclamation-circle"></i><span>Erro ao carregar o gráfico: ${error.message}</span>`;
-            loading.style.color = '#e74c3c';
+            loading.innerHTML = `<i class="fas fa-exclamation-circle" style="color:red"></i>
+                <span style="color:red">Erro: ${error.message}</span>`;
         }
     }
 }
 
-// Função para criar uma legenda personalizada para o gráfico anual
-function atualizarLegendaAnual(dados) {
-    console.log("Atualizando legenda...");
-    const legendaContainer = document.getElementById('chart-legend-container');
-    if (!legendaContainer) {
-        console.error('Elemento container da legenda não encontrado');
+// Função para criar a legenda
+function criarLegenda() {
+    console.log("Criando legenda...");
+    const container = document.getElementById('chart-legend-container');
+    if (!container) {
+        console.error("Container da legenda não encontrado");
         return;
     }
 
-    legendaContainer.innerHTML = '';
+    container.innerHTML = '';
 
-    const total = dados.reduce((acc, item) => acc + item.quantidade, 0);
+    const total = dadosMedicamentosAnual.reduce((acc, item) => acc + item.quantidade, 0);
 
-    // Criar elementos da legenda para cada medicamento
-    dados.forEach(item => {
+    dadosMedicamentosAnual.forEach(item => {
         const porcentagem = Math.round((item.quantidade / total) * 100);
 
         const legendaItem = document.createElement('div');
@@ -199,52 +143,52 @@ function atualizarLegendaAnual(dados) {
         legendaItem.appendChild(legendaLabel);
         legendaItem.appendChild(legendaValor);
 
-        legendaContainer.appendChild(legendaItem);
+        container.appendChild(legendaItem);
     });
 
     // Adicionar total
     const totalItem = document.createElement('div');
     totalItem.className = 'legend-item total';
     totalItem.innerHTML = `<strong>Total de Dispensações:</strong> <span class="legend-value">${total}</span>`;
-    legendaContainer.appendChild(totalItem);
+    container.appendChild(totalItem);
 
-    console.log("Legenda atualizada com sucesso!");
+    console.log("Legenda criada com sucesso");
 }
 
-// Função para exportar o gráfico em PDF
-function exportarGrafico() {
+// Função para exportar o gráfico como PDF
+function exportarGraficoPDF() {
     console.log("Iniciando exportação para PDF...");
 
     try {
-        // Verificar se as bibliotecas necessárias estão carregadas
-        if (typeof html2canvas === 'undefined' || typeof window.jspdf === 'undefined') {
-            console.error("Bibliotecas de exportação não carregadas");
-            alert("Não foi possível carregar as bibliotecas necessárias para exportação. Tente novamente mais tarde.");
+        // Verificar se as bibliotecas necessárias estão disponíveis
+        if (typeof html2canvas === 'undefined') {
+            alert("A biblioteca html2canvas não está disponível. Não é possível exportar.");
             return;
         }
 
-        // Mostrar feedback visual
+        if (typeof window.jspdf === 'undefined') {
+            alert("A biblioteca jsPDF não está disponível. Não é possível exportar.");
+            return;
+        }
+
+        // Modificar o botão para indicar que está processando
         const btnExport = document.getElementById('btn-export-chart');
-        const btnTextOriginal = btnExport.innerHTML;
+        const textoOriginal = btnExport.innerHTML;
         btnExport.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Gerando PDF...';
         btnExport.disabled = true;
 
-        // Capturar a seção do gráfico
+        // Capturar a seção inteira do gráfico
         const chartSection = document.querySelector('.content-section:has(#dispensacoes-chart)');
         if (!chartSection) {
-            console.error("Seção do gráfico não encontrada");
-            btnExport.innerHTML = btnTextOriginal;
-            btnExport.disabled = false;
-            return;
+            throw new Error("Não foi possível encontrar a seção do gráfico");
         }
 
-        // Usar html2canvas para capturar a seção
         html2canvas(chartSection, {
             scale: 2,
-            logging: true,
+            logging: false,
             useCORS: true,
             allowTaint: true
-        }).then(function (canvas) {
+        }).then(canvas => {
             // Criar o PDF
             const { jsPDF } = window.jspdf;
             const pdf = new jsPDF('p', 'mm', 'a4');
@@ -253,22 +197,22 @@ function exportarGrafico() {
             const pageWidth = pdf.internal.pageSize.getWidth();
             const pageHeight = pdf.internal.pageSize.getHeight();
 
-            // Calcular proporção para ajustar à página
-            const imgWidth = pageWidth - 20;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
             // Adicionar título
             pdf.setFontSize(16);
             pdf.setTextColor(44, 62, 80);
             pdf.text('Relatório de Dispensações de Medicamentos (2025)', pageWidth / 2, 20, { align: 'center' });
 
-            // Adicionar subtítulo com data
+            // Adicionar data de geração
             pdf.setFontSize(12);
             pdf.setTextColor(100, 100, 100);
             pdf.text(`Gerado em: ${new Date().toLocaleString('pt-BR')}`, pageWidth / 2, 30, { align: 'center' });
 
+            // Calcular dimensões para a imagem
+            const imgWidth = pageWidth - 20;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
             // Adicionar a imagem
-            const imgData = canvas.toDataURL('image/png');
+            const imgData = canvas.toDataURL('image/png', 1.0);
             pdf.addImage(imgData, 'PNG', 10, 40, imgWidth, imgHeight);
 
             // Adicionar rodapé
@@ -279,20 +223,37 @@ function exportarGrafico() {
             // Salvar o PDF
             pdf.save('Dispensacoes_Medicamentos_2025.pdf');
 
-            // Restaurar o botão
-            btnExport.innerHTML = btnTextOriginal;
-            btnExport.disabled = false;
-
-            console.log("PDF gerado com sucesso!");
-        }).catch(function (error) {
-            console.error("Erro ao gerar PDF:", error);
+            console.log("PDF gerado com sucesso");
+        }).catch(error => {
+            console.error("Erro ao gerar canvas para PDF:", error);
             alert("Ocorreu um erro ao gerar o PDF. Tente novamente.");
-
-            btnExport.innerHTML = btnTextOriginal;
+        }).finally(() => {
+            // Restaurar o botão
+            btnExport.innerHTML = textoOriginal;
             btnExport.disabled = false;
         });
     } catch (error) {
         console.error("Erro na exportação:", error);
-        alert("Ocorreu um erro ao exportar o gráfico. Tente novamente.");
+        alert(`Erro ao exportar: ${error.message}`);
+
+        // Restaurar o botão se houver erro
+        const btnExport = document.getElementById('btn-export-chart');
+        if (btnExport) {
+            btnExport.innerHTML = '<i class="fas fa-file-pdf"></i> Exportar PDF';
+            btnExport.disabled = false;
+        }
     }
+}
+
+// Inicializar quando o documento estiver pronto
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("DOM carregado. Aguardando para criar o gráfico...");
+    // Esperar um momento para garantir que todas as bibliotecas estejam carregadas
+    setTimeout(criarGraficoPizza, 500);
+});
+
+// Adicionar um backup caso o evento DOMContentLoaded já tenha ocorrido
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    console.log("Documento já carregado. Criando gráfico...");
+    setTimeout(criarGraficoPizza, 500);
 }

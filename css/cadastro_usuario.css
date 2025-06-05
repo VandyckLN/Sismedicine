@@ -1,145 +1,318 @@
+/* Estilos gerais do container */
 .container {
-    background: #fff;
-    max-width: 400px;
-    margin: 40px auto 0 auto;
-    padding: 32px 28px;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,119,182,0.10);
+  background: #fff;
+  max-width: 800px; /* Aumentado para acomodar tanto o formulário quanto a tabela */
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 119, 182, 0.1);
 }
 
+/* Layout de duas colunas quando tela for grande o suficiente */
+@media (min-width: 992px) {
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: 320px 1fr; /* Ajustado para a largura do form */
+    gap: 25px;
+  }
+
+  .form-container {
+    padding-right: 15px;
+  }
+}
+
+/* Título do formulário */
+.form-title {
+  color: #0077b6;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e0f2fe;
+}
+
+/* Texto de ajuda do formulário */
+small.texto-de-ajuda {
+  color: rgb(104, 104, 104);
+  text-shadow: 1px 0px 0 #6d6d6d;
+  font-size: 0.7rem;
+  text-align: end;
+  margin: 2px 0;
+}
+
+/* Formulário */
 .container form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px; /* Um pouco mais largo para campos mais confortáveis */
+  margin-bottom: 20px;
 }
 
-.container label {
-    font-weight: 600;
-    color: #0077b6;
-    margin-bottom: 4px;
+/* Grupos de campos */
+.form-group {
+  margin-bottom: 18px;
+  width: 100%;
+  position: relative;
 }
 
-.container input[type="text"],
-.container input[type="password"] {
-    padding: 12px;
-    border: 1px solid #dcdcdc;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border 0.2s;
+/* Labels */
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #0077b6;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  width: 100%;
 }
 
-.container input[type="text"]:focus,
-.container input[type="password"]:focus {
-    border: 1.5px solid #0077b6;
-    outline: none;
+/* Campos de entrada */
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background-color: #f8f9fa;
+  height: 38px; /* Altura ligeiramente menor */
+  box-sizing: border-box;
 }
 
+/* Estado de foco dos campos */
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+  border-color: #0077b6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15);
+  background-color: #fff;
+}
+
+/* Botão de cadastro - mais compacto */
 .container button[type="submit"] {
-    background: linear-gradient(90deg, #0077b6 80%, #00b4d8 100%);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 14px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+  background: linear-gradient(135deg, #0077b6, #023e8a);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px; /* Padding mais compacto */
+  font-size: 0.85rem; /* Fonte menor */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 119, 182, 0.2);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  width: auto; /* Ajusta ao conteúdo */
+  min-width: 120px; /* Menor largura mínima */
+  text-align: center;
+  align-self: flex-start;
 }
 
+/* Modificar o efeito de brilho para ser mais sutil */
+.container button[type="submit"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: all 0.4s ease;
+  opacity: 0.7;
+}
+
+/* Estado hover do botão */
 .container button[type="submit"]:hover {
-    background: #023e8a;
-    transform: translateY(-2px) scale(1.03);
+  background: linear-gradient(135deg, #023e8a, #0077b6);
+  transform: translateY(-2px); /* Reduzido o deslocamento */
+  box-shadow: 0 4px 8px rgba(0, 119, 182, 0.3);
 }
 
-.sucesso {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    border-radius: 8px;
-    padding: 12px;
-    margin-bottom: 16px;
-    text-align: center;
-    font-weight: 600;
+.container button[type="submit"]:hover::before {
+  left: 100%;
 }
 
-.erro {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 8px;
-    padding: 12px;
-    margin-bottom: 16px;
-    text-align: center;
-    font-weight: 600;
+/* Estado ativo do botão */
+.container button[type="submit"]:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 119, 182, 0.2);
 }
 
-.container h3 {
-    margin-bottom: 18px;
-    color: #0077b6;
-    font-size: 1.2rem;
-    font-weight: 600;
+/* Medidor de senha mais integrado */
+.medidor-senha-container {
+  width: 100%;
+  margin: 6px 0;
+}
+
+.medidor-senha {
+  height: 5px; /* Mais fino */
+  background-color: #e0e0e0;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 3px;
+}
+
+.medidor-texto {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* Classes de força para a barra do medidor */
+.fraca {
+  background-color: #dc3545;
+}
+
+.media {
+  background-color: #ffc107;
+}
+
+.forte {
+  background-color: #28a745;
+}
+
+.muito-forte {
+  background-color: #20c997;
+}
+
+/* Tabela de usuários */
+.table-container {
+  width: 100%;
 }
 
 .container table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,119,182,0.06);
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 119, 182, 0.06);
 }
 
-.container th, .container td {
-    padding: 12px 10px;
-    border-bottom: 1px solid #e0e0e0;
-    text-align: center;
+.container th,
+.container td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .container th {
-    background: #0077b6;
-    color: #fff;
-    font-weight: 600;
+  background: #0077b6;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
 }
 
 .container tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .container tr:hover {
-    background: #e0f2fe;
+  background: #f0f7fa;
 }
 
+/* Botões de ação */
 .btn {
-    padding: 7px 16px;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 14px;
-    margin: 0 2px;
-    transition: background 0.2s;
-    display: inline-block;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 3px;
+  transition: all 0.2s;
+  display: inline-block;
 }
 
 .btn-editar {
-    background-color: #28a745;
+  background-color: #28a745;
 }
 .btn-editar:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
 .btn-excluir {
-    background-color: #dc3545;
+  background-color: #dc3545;
 }
 .btn-excluir:hover {
-    background-color: #c82333;
+  background-color: #c82333;
 }
 
-.btn-voltar {
-    background-color: #0077b6;
+/* Mensagens */
+.mensagem-container {
+  margin-bottom: 20px;
 }
-.btn-voltar:hover {
-    background-color: #023e8a;
+
+.mensagem {
+  padding: 12px 15px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.sucesso {
+  background-color: #d4edda;
+  color: #155724;
+  border-left: 4px solid #28a745;
+}
+
+.erro {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left: 4px solid #dc3545;
+}
+
+/* Para dispositivos menores */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 1.3rem;
+  }
+
+  .container form {
+    max-width: 100%;
+  }
+
+  .dashboard-container {
+    display: block;
+  }
+
+  .container button[type="submit"] {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* Animação suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  animation: fadeIn 0.3s ease-out;
 }

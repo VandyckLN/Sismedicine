@@ -1,0 +1,45 @@
+/* Estilos para o medidor de força de senha */
+.medidor-senha-container {
+    margin-top: 5px;
+    display: none;
+}
+
+.medidor-senha {
+    height: 5px;
+    background-color: #e6e6e6;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.medidor-barra {
+    height: 100%;
+    width: 0;
+    border-radius: 3px;
+    transition: width 0.3s ease-in-out;
+}
+
+.medidor-barra.muito-fraca {
+    background-color: #ff4d4d;
+}
+
+.medidor-barra.fraca {
+    background-color: #ffa64d;
+}
+
+.medidor-barra.media {
+    background-color: #ffff4d;
+}
+
+.medidor-barra.forte {
+    background-color: #4dff4d;
+}
+
+.medidor-barra.muito-forte {
+    background-color: #00cc00;
+}
+
+.medidor-texto {
+    font-size: 12px;
+    color: #666;
+    text-align: right;
+}

@@ -39,7 +39,7 @@
 /* Corrigir margin do título que estava com -500px */
 #dashboard-title {
   margin-top: 50px;
-  
+
   display: block;
   text-align: center;
   width: 100%;
@@ -85,7 +85,7 @@
 .status-card {
   background: var(--card-bg);
   border-radius: var(--border-radius);
-  padding: var(--spacing-md); /* Reduzido de 50px para um valor razoável */
+  padding: 8px 15px; 
   box-shadow: var(--shadow);
   transition: transform 0.25s;
   position: relative;
@@ -94,12 +94,33 @@
   min-height: 160px; /* Reduzido de 360px para 160px */
   border-top: 3px solid var(--secondary);
 }
+button.team-button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 90px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+  position: relative;
+  left: 870px;}
+
+button.team-button:hover {
+  background:#e74c3c;
+  
+}
 
 /* Gráfico ajustado para tamanho adequado */
 .chart-container {
-  width: 100%;
-  height: 320px;
   position: relative;
+  height: 400px !important;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 /* Ajuste da seção de conteúdo para espaçamento adequado */
@@ -667,10 +688,119 @@ header h1 i {
   margin-top: 5px;
 }
 
-/* Responsividade para manter layout em uma única tela */
+/* Estilos para o seletor de meses */
+.month-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  padding: 8px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+#current-month {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin: 0 15px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.month-nav {
+  background: transparent;
+  border: none;
+  color: var(--secondary);
+  font-size: 1rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.month-nav:hover {
+  background: var(--secondary-light);
+  color: white;
+}
+
+/* Estilos para o container do gráfico de pizza */
+.chart-container {
+  position: relative;
+  height: 400px !important;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 5px;
+  flex-basis: 45%;
+}
+
+.legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  margin-right: 8px;
+}
+
+.legend-label {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.legend-value {
+  margin-left: 5px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Estilos para o item de total */
+.total {
+  flex-basis: 100%;
+  justify-content: center;
+  background-color: #e0f2fe;
+  margin-top: 10px;
+  font-size: 1.1em;
+}
+
+/* ==========================
+   Responsividade - Sistema organizado
+   ========================== */
+
+/* 1. DESKTOP GRANDE (acima de 1200px) - Layout principal já definido acima */
+
+/* 2. DESKTOP PEQUENO / LAPTOP (992px-1200px) */
 @media (max-width: 1200px) {
   .main-content-row {
     grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
   }
 
   .stats-container {
@@ -680,33 +810,27 @@ header h1 i {
   .widgets-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  .chart-container {
+    height: 350px !important;
+    margin: 0 auto 20px auto;
   }
 }
 
-@media (max-width: 768px) {
-  .stats-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .widgets-container {
-    grid-template-columns: 1fr;
-  }
-}
- div.alert{
-    background-color: var(--info);
- }
-@media (max-width: 480px) {
-  .stats-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Responsividade */
-@media (max-width: 1024px) {
+/* 3. TABLETS (768px-991px) */
+@media (max-width: 991px) {
   :root {
     --sidebar-width: 60px;
+    --header-height: 60px;
   }
 
+  .content-area {
+    padding: var(--spacing-sm);
+  }
+
+  /* Ajuste da sidebar para tablets */
   .menu-title,
   .menu-item span {
     display: none;
@@ -721,8 +845,16 @@ header h1 i {
     font-size: 1.3rem;
   }
 
+  .menu-item.active::before {
+    left: 0;
+    height: 40%;
+  }
+
+  /* Efeito de expansão ao passar o mouse */
   .sidebar:hover {
     width: 250px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
   }
 
   .sidebar:hover .menu-title,
@@ -731,78 +863,186 @@ header h1 i {
   }
 
   .sidebar:hover .menu-item a {
-    padding: 12px 20px;
+    padding: 12px 16px;
     justify-content: flex-start;
   }
 
   .sidebar:hover .menu-item i {
     font-size: 1.1rem;
   }
-}
 
-@media (max-width: 768px) {
-  .dashboard-grid {
-    grid-template-columns: 1fr;
+  .sidebar:hover .menu-item.active::before {
+    left: -8px;
+    height: 60%;
   }
 
+  /* Ajusta informações do usuário */
+  .user-info {
+    gap: 12px;
+  }
+
+  #relogio {
+    display: none;
+  }
+
+  /* Ajustar widgets */
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 4. CELULARES (abaixo de 768px) */
+@media (max-width: 767px) {
+  :root {
+    --header-height: auto;
+  }
+
+  body {
+    padding-top: 120px; /* Ajustar para o header que agora é maior */
+  }
+
+  /* Header se torna uma coluna em dispositivos móveis */
+  header {
+    flex-direction: column;
+    padding: 10px 15px;
+  }
+
+  header h1 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .user-info {
+    width: 100%;
+    justify-content: center;
+    margin: 5px 0;
+  }
+
+  /* Sidebar se torna horizontal */
   .sidebar {
     width: 100%;
     height: auto;
-    position: static;
-    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    top: var(--header-height);
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    background: var(--primary);
+  }
+
+  .sidebar::-webkit-scrollbar {
+    height: 4px;
   }
 
   .menu-items {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap; /* Mudamos para nowrap para scroll horizontal */
+    justify-content: flex-start;
+    padding: 8px 10px;
+    overflow-x: auto;
   }
 
   .menu-item {
     width: auto;
+    margin: 0 4px;
+    flex-shrink: 0; /* Impede que os itens encolham */
   }
 
   .menu-item a {
-    padding: 10px 15px;
-    display: flex;
+    padding: 8px 15px;
+    border-radius: 20px;
+    min-width: 90px;
+    justify-content: center;
   }
 
-  .menu-item span,
-  .menu-title {
+  .menu-item span {
     display: block;
+    font-size: 0.8rem;
   }
 
-  .content-area {
-    margin-left: 0;
-    padding: 15px;
+  .menu-item.active::before {
+    display: none; /* Remove indicador lateral */
+  }
+
+  .menu-item.active {
+    background-color: rgba(52, 152, 219, 0.3); /* Destaque no item ativo */
+    border-radius: 20px;
   }
 
   .menu-title {
-    text-align: center;
+    display: none;
   }
 
+  /* Sidebar não expande mais ao passar o mouse */
   .sidebar:hover {
     width: 100%;
   }
+
+  /* Ajustes da área de conteúdo */
+  .content-area {
+    margin-left: 0;
+    padding: 10px;
+    margin-top: 5px;
+  }
+
+  /* Ajustar layout de cards */
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .status-card {
+    min-height: 120px;
+    padding: var(--spacing-sm);
+  }
+
+  .widgets-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tabela responsiva com scroll horizontal */
+  .section-body:has(table) {
+    max-height: 300px;
+    overflow-x: auto;
+  }
 }
 
-@media (max-width: 480px) {
-  header {
-    flex-direction: column;
-    height: auto;
-    padding: 10px;
+/* 5. CELULARES PEQUENOS (abaixo de 480px) */
+@media (max-width: 479px) {
+  #dashboard-title {
+    font-size: 1.3rem;
+    margin-top: 30px;
+    padding-bottom: 10px;
   }
 
-  .user-info {
-    margin-top: 10px;
-    justify-content: center;
-    width: 100%;
+  /* Ajusta espaçamentos */
+  .content-area {
+    padding: 8px;
   }
 
+  /* Cartões em coluna única */
   .stats-container {
     grid-template-columns: 1fr;
   }
 
+  /* Ajustes de menus */
+  .menu-item a {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    min-width: 70px;
+  }
+
+  .menu-item a i {
+    font-size: 1rem;
+    margin-right: 4px;
+  }
+
+  /* Ajustar tamanho do gráfico */
+  .chart-container {
+    height: 300px !important;
+  }
+
+  /* Tabelas responsivas */
   .activities-table,
   .activities-table thead,
   .activities-table tbody,
@@ -829,6 +1069,7 @@ header h1 i {
     border-bottom: 1px solid var(--border-color);
     position: relative;
     padding-left: 50%;
+    min-height: 24px;
   }
 
   .activities-table td:before {
@@ -853,154 +1094,23 @@ header h1 i {
   .activities-table td:nth-of-type(4):before {
     content: "Detalhes";
   }
-}
 
-/* Responsividade do menu */
-@media (max-width: 1024px) {
-  :root {
-    --sidebar-width: 60px;
-  }
-
-  .menu-title,
-  .menu-item span {
-    display: none;
-  }
-
-  .menu-item a {
-    padding: 15px 0;
-    justify-content: center;
-  }
-
-  .menu-item i {
-    font-size: 1.3rem;
-  }
-
-  .sidebar:hover {
-    width: 250px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  }
-
-  .sidebar:hover .menu-title,
-  .sidebar:hover .menu-item span {
-    display: block;
-  }
-
-  .sidebar:hover .menu-item a {
-    padding: 12px 16px;
-    justify-content: flex-start;
-  }
-
-  .sidebar:hover .menu-item i {
-    font-size: 1.1rem;
-  }
-
-  .menu-item.active::before {
-    left: 0;
-    height: 40%;
-  }
-
-  .sidebar:hover .menu-item.active::before {
-    left: -8px;
-    height: 60%;
+  /* Legenda do gráfico */
+  .legend-item {
+    flex-basis: 100%;
   }
 }
 
-@media (max-width: 768px) {
-  header {
-    padding: 0 15px;
-  }
-
-  .user-info {
-    gap: 12px;
-  }
-
-  #relogio {
-    display: none;
-  }
-
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-    border-bottom: 1px solid var(--border-color);
-    background: var(--primary);
-  }
-
-  .menu-items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0;
-  }
-
-  .menu-item {
-    width: auto;
-    margin: 5px;
-    border-radius: 20px;
-  }
-
-  .menu-item a {
-    padding: 8px 15px;
-    display: flex;
-    border-radius: 20px;
-  }
-
-  .menu-item span {
-    display: block;
-    font-size: 0.85rem;
-  }
-
-  .menu-item.active::before {
-    display: none;
+/* ==========================
+   Correção para a sobreposição do menu lateral
+   ========================== */
+@media (min-width: 768px) {
+  body {
+    padding-left: var(--sidebar-width);
+    padding-top: var(--header-height);
   }
 
   .content-area {
-    margin-left: 0;
-    padding: 15px;
-  }
-
-  .menu-title {
-    display: none;
-  }
-
-  .sidebar:hover {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  header {
-    flex-direction: column;
-    height: auto;
-    padding: 10px;
-  }
-
-  .user-info {
-    margin-top: 10px;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .menu-item {
-    margin: 3px;
-  }
-
-  .menu-item a {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-  }
-
-  .menu-item a i {
-    font-size: 1rem;
-    margin-right: 5px;
-  }
-
-  .logout {
-    padding: 6px 12px;
-    font-size: 0.8rem;
+    margin-left: 0; /* Removemos o margin-left pois já temos padding-left no body */
   }
 }

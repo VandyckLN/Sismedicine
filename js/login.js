@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const mensagemContainer = document.getElementById('mensagem-container');
 
+
     if (erro === 'usuario') {
         let mensagem = 'Usuário não encontrado! Verifique suas credenciais.';
         if (tentativas) {
@@ -48,24 +49,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Função para iniciar contagem regressiva
     function iniciarContagemRegressiva(segundosRestantes) {
-        const mensagemBox = document.querySelector('.mensagem-erro');
-        if (!mensagemBox) return;
+        const msgBox = document.querySelector('.mensagem-erro');
+        if (!msgBox) return;
 
-        // Adicionar elemento para contagem regressiva
-        const contador = document.createElement('div');
-        contador.className = 'contador-bloqueio';
-        contador.innerHTML = formatarTempo(segundosRestantes);
-        mensagemBox.appendChild(contador);
+        const timerSpan = document.createElement('span');
+        timerSpan.className = 'timer';
+        timerSpan.textContent = formatarTempo(segundosRestantes);
+        msgBox.appendChild(timerSpan);
 
-        // Atualizar contagem a cada segundo
-        const intervalo = setInterval(() => {
+        const interval = setInterval(() => {
             segundosRestantes--;
+
             if (segundosRestantes <= 0) {
-                clearInterval(intervalo);
-                location.reload(); // Recarrega a página quando o tempo acabar
-            } else {
-                contador.innerHTML = formatarTempo(segundosRestantes);
+                clearInterval(interval);
+                window.location.href = 'login.php';
+                return;
             }
+
+            timerSpan.textContent = formatarTempo(segundosRestantes);
         }, 1000);
     }
 
@@ -130,67 +131,20 @@ document.addEventListener('DOMContentLoaded', function () {
         const telaCarregamento = document.createElement('div');
         telaCarregamento.className = 'tela-carregamento';
 
-        // Adicionar o título da tela de carregamento
-        const titulo = document.createElement('h2');
-        titulo.textContent = 'Login Realizado com Sucesso';
-        titulo.className = 'carregamento-titulo';
-        telaCarregamento.appendChild(titulo);
+        const spinner = document.createElement('div');
+        spinner.className = 'spinner';
 
-        // Adicionar mensagem
         const mensagem = document.createElement('p');
-        mensagem.textContent = 'Carregando sistema...';
-        mensagem.className = 'carregamento-mensagem';
+        mensagem.textContent = 'Entrando...';
+
+        telaCarregamento.appendChild(spinner);
         telaCarregamento.appendChild(mensagem);
-
-        // Container do progresso
-        const progressoContainer = document.createElement('div');
-        progressoContainer.className = 'progresso-container';
-
-        // Barra de progresso
-        const progressoBar = document.createElement('div');
-        progressoBar.className = 'progresso-bar';
-
-        // Valor do progresso
-        const progressoValor = document.createElement('span');
-        progressoValor.className = 'progresso-valor';
-        progressoValor.textContent = '0%';
-
-        // Adicionar elementos à hierarquia
-        progressoContainer.appendChild(progressoBar);
-        telaCarregamento.appendChild(progressoContainer);
-        telaCarregamento.appendChild(progressoValor);
-
-        // Adicionar ao body
         document.body.appendChild(telaCarregamento);
 
-        // Ocultar o container de login e o overlay
-        const loginContainer = document.querySelector('.login-container');
-        const overlay = document.querySelector('.overlay');
-        if (loginContainer) loginContainer.style.display = 'none';
-        if (overlay) overlay.style.display = 'none';
-
-        // Animar o progresso ao longo de 2 segundos
-        let progresso = 0;
-        const duracaoTotal = 2000; // 2 segundos
-        const intervalo = 20; // atualizar a cada 20ms para animação suave
-        const incremento = 100 / (duracaoTotal / intervalo);
-
-        const animacaoProgresso = setInterval(() => {
-            progresso += incremento;
-            if (progresso >= 100) {
-                progresso = 100;
-                clearInterval(animacaoProgresso);
-
-                // Redirecionar após o progresso chegar a 100%
-                setTimeout(() => {
-                    window.location.href = url;
-                }, 200); // Pequeno delay para mostrar o 100%
-            }
-
-            // Atualizar a barra de progresso
-            progressoBar.style.width = progresso + '%';
-            progressoValor.textContent = Math.round(progresso) + '%';
-        }, intervalo);
+        // Redirecionar após um breve atraso
+        setTimeout(() => {
+            window.location.href = url;
+        }, 1000);
     }
 
     // Limpar parâmetros da URL para evitar mensagens ao recarregar (opcional)
@@ -204,3 +158,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+

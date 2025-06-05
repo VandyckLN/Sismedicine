@@ -42,23 +42,65 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 // Gráfico
-$sqlGrafico = "SELECT m.nome AS medicamento, COUNT(d.id) AS total
+$sqlGrafico = "SELECT 
+                m.nome AS medicamento, 
+                SUM(d.quantidade) AS total_unidades,
+                COUNT(d.id) AS total_dispensacoes
                FROM dispensacoes d
                JOIN medicamentos m ON d.medicamento_id = m.id
                WHERE d.data_disp BETWEEN ? AND ?
-               GROUP BY d.medicamento_id";
+               GROUP BY d.medicamento_id
+               ORDER BY total_unidades DESC 
+               LIMIT 10";
+
 $stmtGrafico = $conn->prepare($sqlGrafico);
 $stmtGrafico->bind_param("ss", $data_inicio, $data_fim);
 $stmtGrafico->execute();
 $resultadoGrafico = $stmtGrafico->get_result();
 
+// Arrays para armazenar os dados do gráfico
 $medicamentos = [];
-$totais = [];
+$totaisUnidades = [];
+$totaisDispensacoes = [];
+$categorias = [];
+$cores = [
+    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', 
+    '#FF9F40', '#DADADA', '#75D701', '#26C6DA', '#D81B60'
+];
+
+$i = 0;
 while ($row = $resultadoGrafico->fetch_assoc()) {
     $medicamentos[] = $row['medicamento'];
-    $totais[] = $row['total'];
+    $totaisUnidades[] = $row['total_unidades'];
+    $totaisDispensacoes[] = $row['total_dispensacoes'];
+    $categorias[] = $row['categoria'] ?? 'Não categorizado';
+    $i++;
 }
 
+// Consulta para dispensações por mês (para gráfico de linha)
+$sqlMensal = "SELECT 
+                DATE_FORMAT(d.data_disp, '%Y-%m') AS mes,
+                DATE_FORMAT(d.data_disp, '%b/%Y') AS mes_nome,
+                COUNT(d.id) AS total
+              FROM dispensacoes d
+              WHERE d.data_disp BETWEEN ? AND ?
+              GROUP BY DATE_FORMAT(d.data_disp, '%Y-%m')
+              ORDER BY mes";
+
+$stmtMensal = $conn->prepare($sqlMensal);
+$stmtMensal->bind_param("ss", $data_inicio, $data_fim);
+$stmtMensal->execute();
+$resultadoMensal = $stmtMensal->get_result();
+
+$meses = [];
+$dispensacoesPorMes = [];
+
+while ($row = $resultadoMensal->fetch_assoc()) {
+    $meses[] = $row['mes_nome'];
+    $dispensacoesPorMes[] = $row['total'];
+}
+
+$stmtMensal->close();
 $stmt->close();
 $stmtGrafico->close();
 $conn->close();
@@ -109,6 +151,65 @@ $conn->close();
         th {
             background: #007BFF;
             color: white;
+        }
+        /* Adicionando novos estilos para os gráficos */
+        .graficos-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .grafico-card {
+            flex: 1 1 400px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        
+        .resumo-container {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        #resumo-dados {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .dado-resumo {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            flex: 1 1 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .dado-valor {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007BFF;
+            margin: 10px 0;
+        }
+        
+        .dado-label {
+            color: #6c757d;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        @media print {
+            .graficos-container, .resumo-container {
+                page-break-inside: avoid;
+            }
         }
     </style>
 </head>
@@ -163,8 +264,27 @@ $conn->close();
 <p>Nenhum registro encontrado.</p>
 <?php endif; ?>
 
-<h3>Resumo gráfico de dispensações</h3>
-<canvas id="graficoDispensacoes" width="600" height="300"></canvas>
+<div class="graficos-container">
+    <div class="grafico-card">
+        <h3>Medicamentos mais dispensados</h3>
+        <canvas id="graficoDispensacoes" width="600" height="300"></canvas>
+    </div>
+    
+    <div class="grafico-card">
+        <h3>Dispensações por mês</h3>
+        <canvas id="graficoMensal" width="600" height="300"></canvas>
+    </div>
+    
+    <div class="grafico-card">
+        <h3>Distribuição por categoria</h3>
+        <canvas id="graficoPizza" width="400" height="400"></canvas>
+    </div>
+</div>
+
+<div class="resumo-container">
+    <h3>Resumo do período</h3>
+    <div id="resumo-dados"></div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -194,7 +314,7 @@ new Chart(ctx, {
         labels: <?php echo json_encode($medicamentos); ?>,
         datasets: [{
             label: 'Dispensações',
-            data: <?php echo json_encode($totais); ?>,
+            data: <?php echo json_encode($totaisUnidades); ?>, // Alterado de $totais para $totaisUnidades
             backgroundColor: 'rgba(75, 192, 192, 0.7)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1
